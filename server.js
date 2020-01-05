@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 const crypto = require("crypto");
 const path = require("path");
+const fs = require("fs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -16,6 +17,7 @@ const allowedImageMimeTypes = [
 ];
 
 let uploadedImageName = "";
+let allImagesName = [];
 
 var storage = multer.diskStorage({
   destination: "./public/images/",
@@ -42,7 +44,18 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 router.get("/", (req, res) => {
-  res.send("Accueil");
+  fs.readdir("public/images", (err, files) => {
+    if (err) {
+      console.error(err);
+      res.render("home", {
+        allImagesName: [],
+        error: "Images non disponibles"
+      });
+    } else {
+      res.render("home", { allImagesName: files, error: "" });
+      return files;
+    }
+  });
 });
 
 router.get("/images/new", (req, res) => {

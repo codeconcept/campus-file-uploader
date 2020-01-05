@@ -1,14 +1,28 @@
-<h2>Ajouter une image</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/images/new" enctype="multipart/form-data" method="POST">
-  <input type="text" placeholder="title" name="title" /><br />
-  <input type="file" name="picture" /><br />
-  <button type="submit">ajouter</button>
-</form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
 
-<div>
-  <% if (uploadedImageName) { %>
-  <div><%= uploadedImageName %></div>
-  <img src="http://localhost:3000/images/<%= uploadedImageName %>" alt="" />
-  <% } %>
-</div>
+<body>
+  <h2>Ajouter une image</h2>
+
+  <form action="/images/new" enctype="multipart/form-data" method="POST">
+    <input type="text" placeholder="title" name="title" /><br />
+    <input type="file" name="picture" /><br />
+    <button type="submit">ajouter</button>
+  </form>
+
+  <div>
+    <% if (uploadedImageName) { %>
+    <div><%= uploadedImageName %></div>
+    <img src="http://localhost:3000/images/<%= uploadedImageName %>" alt="<%= uploadedImageName %>" />
+    <% } %>
+  </div>
+</body>
+
+</html>
