@@ -10,6 +10,7 @@
 
 <body>
     <h1>File uploader</h1>
+    <a href="http://localhost:3000/images/new">uploader une image</a><br><br>
     <% if(allImagesName && allImagesName.length > 0) { %>
     <% allImagesName.forEach( imgName => { %>
     <img src="http://localhost:3000/images/<%= imgName %>" alt="<%= imgName %>" style="height: 150px" />

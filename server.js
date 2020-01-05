@@ -59,7 +59,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/images/new", (req, res) => {
-  res.render("image-form", {});
+  res.render("image-form", { uploadedImageName });
 });
 
 router.post("/images/new", upload.single("picture"), (req, res) => {
