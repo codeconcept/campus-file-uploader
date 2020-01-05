@@ -5,3 +5,10 @@
   <input type="file" name="picture" /><br />
   <button type="submit">ajouter</button>
 </form>
+
+<div>
+  <% if (uploadedImageName) { %>
+  <div><%= uploadedImageName %></div>
+  <img src="http://localhost:3000/images/<%= uploadedImageName %>" alt="" />
+  <% } %>
+</div>
